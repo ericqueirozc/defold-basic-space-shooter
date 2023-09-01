@@ -1,0 +1,19 @@
+function init(self)
+	go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, 800, go.EASING_LINEAR, 2)
+end
+
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		go.delete()
+		particlefx.play("#explosion")
+	end
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	if pos.y >= 700 then
+		go.delete()
+	end
+end

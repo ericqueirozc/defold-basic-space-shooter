@@ -1,0 +1,8 @@
+local score = 0
+
+function on_message(self, message_id, message, sender)
+	score = score + 1
+	local node = gui.get_node("score")
+	gui.set_text(node, score)
+	print(message_id)
+end

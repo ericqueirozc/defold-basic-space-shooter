@@ -1,0 +1,7 @@
+sound: "/assets/2019-12-11_-_Retro_Platforming_-_David_Fesliyan.ogg"
+looping: 1
+group: "master"
+gain: 0.5
+pan: 0.0
+speed: 1.0
+loopcount: 0

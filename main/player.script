@@ -1,0 +1,34 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.is_on_countdown = false
+	self.timer = 0
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("left") then
+		local pos = go.get_position()
+		pos.x = pos.x - 10
+		go.set_position(pos)
+	elseif action_id == hash("right") then
+		local pos = go.get_position()
+		pos.x = pos.x + 10
+		go.set_position(pos)
+	elseif action_id == hash("fire") then
+		if not self.is_on_countdown then
+			sound.play("#shot")
+			factory.create("#factory")
+			self.is_on_countdown = true
+			self.timer = 1
+		end
+	end
+end
+
+function update(self, dt)
+	if self.is_on_countdown then
+		self.timer = self.timer - dt
+		if self.timer <= 0 then
+			self.is_on_countdown = false
+			self.timer = 0
+		end
+	end	
+end
